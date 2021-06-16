@@ -1,3 +1,5 @@
+package com.hyd.proxy.jdk;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
@@ -10,9 +12,18 @@ public class MyInvocationHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("***权限校验***");
+        checkPermission();
         Object result = method.invoke(target, args);
-        System.out.println("***日志记录***");
+        logging();
         return result;
     }
+
+    public void checkPermission(){
+        System.out.println("***权限校验***");
+
+    }
+    public void logging(){
+        System.out.println("***日志记录***");
+    }
+
 }

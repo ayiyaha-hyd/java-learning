@@ -1,4 +1,8 @@
-public class UserDaoImpl implements UserDao {
+package com.hyd.proxy.jdk.service.impl;
+
+import com.hyd.proxy.jdk.service.UserService;
+
+public class UserServiceImpl implements UserService {
     @Override
     public void add() {
         System.out.println("添加功能");

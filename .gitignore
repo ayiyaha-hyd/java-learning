@@ -5,3 +5,4 @@ java-reflection/out/
 .idea/
 *.iml
 java-proxy/out/
+java-proxy/target/

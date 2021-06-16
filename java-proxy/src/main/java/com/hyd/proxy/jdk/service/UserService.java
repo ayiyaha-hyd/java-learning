@@ -1,4 +1,6 @@
-public interface UserDao {
+package com.hyd.proxy.jdk.service;
+
+public interface UserService {
     void add();
 
     void delete();
