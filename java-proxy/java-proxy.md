@@ -164,7 +164,12 @@ Cglib源码分析 invoke和invokeSuper的差别
 https://www.cnblogs.com/lvbinbin2yujie/p/11135396.html#cglib--invoke%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%AD%BB%E5%BE%AA%E7%8E%AF
 
 https://blog.csdn.net/MakeContral/article/details/79593732
+
+invokeSuper调用的是被代理类的方法, 但只有代理类才存在基类, 必须使用代理类作为obj参数调用
+invoke调用的是增强方法, 必须使用被代理类的对象调用, 使用代理类会造成OOM
+
 在Spring的AOP编程中:
+
 如果加入容器的目标对象有实现接口,用JDK代理
 如果目标对象没有实现接口,用Cglib代理   
 ---
