@@ -59,19 +59,22 @@ Class对象总结：
         User user4 = constructor.newInstance();
         user4.show();
 ```
-（2）获取Class对象的三种方式
+（2）获取Class对象的四种方式
 
-Java提供了三种方式获取Class对象，一种是使用.class，另外一种是使用Class.forName()，还有对象.getClass()。
+Java提供了四种方式获取Class对象，一种是使用.class，另外一种是使用Class.forName()，还有对象.getClass()，还有利用ClassLoader加载。
 .class方式适用于在编译时已经知道具体的类。
 ```java
-//1.通过类的全限定名字符串
-Class<?> clazz1 = Class.forName("java.lang.String");
-//2.通过类的class属性
-Class<String> clazz2 = String.class;
-//3.通过对象的getClass()方法（Object超类方法）
-Class<? extends String> clazz3 = new String().getClass();
+        //1.通过类的全限定名字符串
+        Class<?> clazz1 = Class.forName("java.lang.String");
+        //2.通过类的class属性
+        Class<String> clazz2 = String.class;
+//3.通过调用运行时对象的getClass()方法（Object超类方法）
+        Class<? extends String> clazz3 = new String().getClass();
+        //4.类加载器classloader
+        ClassLoader classLoader = Test.class.getClassLoader();
+        Class<?> clazz4 = classLoader.loadClass("java.lang.String");
 ```
-通过这三种方式获取的一个类的Class对象是同一个，因为类只会加载一次，对应的Class对象在类加载阶段存放到堆当中。
+通过这四种方式获取的一个类的Class对象是同一个，因为类只会加载一次，对应的Class对象在类加载阶段存放到堆当中。
 ```java
 //查看是否是同一个Class对象，输出结果一致
 System.out.println(clazz1.hashCode());

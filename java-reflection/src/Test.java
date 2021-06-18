@@ -5,8 +5,8 @@ import java.util.Date;
 
 public class Test {
     public static void main(String[] args) throws Exception {
-        t1();
-//        t2();
+//        t1();
+        t2();
 //        t3();
 //        t4();
 //        t5();
@@ -38,13 +38,17 @@ public class Test {
         Class<?> clazz1 = Class.forName("java.lang.String");
         //2.通过类的class属性
         Class<String> clazz2 = String.class;
-        //3.通过对象的getClass()方法（Object超类方法）
+        //3.通过调用运行时对象的getClass()方法（Object超类方法）
         Class<? extends String> clazz3 = new String().getClass();
+        //4.类加载器classloader
+        ClassLoader classLoader = Test.class.getClassLoader();
+        Class<?> clazz4 = classLoader.loadClass("java.lang.String");
 
         //查看是否是同一个Class对象，输出结果一致
         System.out.println(clazz1.hashCode());
         System.out.println(clazz2.hashCode());
         System.out.println(clazz3.hashCode());
+        System.out.println(clazz4.hashCode());
         System.out.println(clazz1 == clazz2);
         System.out.println(clazz1 == clazz3);
         System.out.println(clazz2 == clazz3);
