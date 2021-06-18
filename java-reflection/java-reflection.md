@@ -33,20 +33,31 @@ Class对象总结：
 见反射的优点和使用场景。
 
 ## 五、反射的基本使用
-（1）创建对象的两种方式  
+（1）创建对象的三种方式  
 第一种，new 对象。  
-第二种，通过反射创建。
+第二种，通过反射创建(newInstance)。
+第三种，通过实现Cloneable接口，覆写clone方法。
+第四种，通过反射构造器创建。
 ```java
 //创建对象的两种方式
 //1.通过new 创建对象
-User user1 = new User();
-user1.show();
-System.out.println("---");
-//2.通过反射创建对象
-Class<?> clazz2 = Class.forName("User");
-Object user2 = clazz2.newInstance();
-Method show = clazz2.getMethod("show");
-show.invoke(user2);
+//创建对象的两种方式
+//1.通过new 创建对象
+        User user1 = new User();
+                user1.show();
+                System.out.println("---");
+                //2.通过反射创建对象
+                Class<?> clazz2 = Class.forName("User");
+        Object user2 = clazz2.newInstance();
+        Method show = clazz2.getMethod("show");
+        show.invoke(user2);
+        //3.通过实现Cloneable接口，覆写clone方法
+        User user3 = (User) user1.clone();
+        user3.show();
+        //4.反射构造器
+        Constructor<User> constructor = User.class.getConstructor();
+        User user4 = constructor.newInstance();
+        user4.show();
 ```
 （2）获取Class对象的三种方式
 

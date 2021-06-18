@@ -1,6 +1,6 @@
 import java.util.StringJoiner;
 
-public class User extends People implements Behavior {
+public class User extends People implements Behavior ,Cloneable{
     public String name = "Tom";
     public int age = 18;
     private String gender = "male";
@@ -53,5 +53,10 @@ public class User extends People implements Behavior {
                 .add("age=" + age)
                 .add("gender='" + gender + "'")
                 .toString();
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

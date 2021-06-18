@@ -5,11 +5,11 @@ import java.util.Date;
 
 public class Test {
     public static void main(String[] args) throws Exception {
-//        t1();
+        t1();
 //        t2();
 //        t3();
 //        t4();
-        t5();
+//        t5();
     }
 
     public static void t1() throws Exception {
@@ -23,6 +23,14 @@ public class Test {
         Object user2 = clazz2.newInstance();
         Method show = clazz2.getMethod("show");
         show.invoke(user2);
+        //3.通过实现Cloneable接口，覆写clone方法
+        User user3 = (User) user1.clone();
+        user3.show();
+        //4.反射构造器
+        Constructor<User> constructor = User.class.getConstructor();
+        User user4 = constructor.newInstance();
+        user4.show();
+
     }
 
     public static void t2() throws Exception {
