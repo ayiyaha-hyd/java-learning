@@ -1,0 +1,7 @@
+1.JVM 没有提供 booolean 类型专用的字节码指令，而是使用 int 相关指令来代替。
+2. 对 boolean 数组的访问与修改，会共用 byte 数组的 baload 和 bastore 指令。
+1）上面的第 1 个结论是说：boolean 在底层实际会调用 int，那么既然 int 占 4 个字节，boolean 也自然占 4 个字节。即，boolean 类型占 4 个字节。
+（2）上面的第 2 个结论是说：boolean 数组在底层会用到 byte 指令，那么既然 byte 占 1 个字节，boolean 数组中的 boolean 也就占 1 个字节。即，boolean 数组中的 boolean 占 1 个字节。
+如果 boolean 是单独使用：boolean 占 4 个字节。
+如果 boolean 是以 “boolean 数组” 的形式使用：boolean 占 1 个字节。
+提示：以上结论是《Java 虚拟机规范》一书给的，也就是说，仅仅适用于那些遵循了 “规范” 的 JVM。换句话说，如果某个 JVM 没有遵循规范，boolean 到底几个字节就又无法得知了。

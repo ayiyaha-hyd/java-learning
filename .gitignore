@@ -6,3 +6,6 @@ java-reflection/out/
 *.iml
 java-proxy/out/
 java-proxy/target/
+java-thread/target/
+java-basic/target/
+mq/target/
